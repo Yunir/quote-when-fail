@@ -1,0 +1,43 @@
+= Quote when fail
+
+Gradle plugin that will cheer you up when your builds fail.
+
+It retrieves quotes from bash.org.
+
+== How-to apply plugin
+
+==== 1st variant (mavenLocal repo)
+
+1. Upload to your local mvn repo:
+[source,shell]
+----
+./gradlew uploadArchives
+----
+1. Add inside your gradle build script
+
+[source,kotlin]
+----
+
+buildscript {
+    repositories {
+        maven {
+            url = uri("/path/to/.m2/repository")
+        }
+    }
+    dependencies {
+        classpath("com.yunir:quote-when-fail:1.0")
+    }
+}
+apply(plugin = "com.yunir.quote-when-fail")
+----
+IMPORTANT: Do not forget to set path to your mavel local repository
+
+==== 2nd variant (pliguns {} closure)
+
+**TBD**: await approval in plugins.gradle.com
+
+== Future plans
+
+* add i18n (use bash.im for RU and bash.org for EN)
+* handle website is unavailable
+* cache quotes to file and use cached quotes when there are no internet connection
