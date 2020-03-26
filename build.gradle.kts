@@ -18,6 +18,7 @@ dependencies {
     implementation(kotlin("stdlib-jdk8"))
     implementation(gradleApi())
     implementation(localGroovy())
+    implementation("org.jsoup:jsoup:1.13.1")
 }
 
 tasks {
