@@ -2,13 +2,16 @@ plugins {
     kotlin("jvm") version "1.3.70"
     `java-gradle-plugin`
     id("com.gradle.plugin-publish") version "0.10.1"
+    java
+    maven
 }
 
 group = "com.yunir"
-version = "0.1"
+version = "0.2"
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 dependencies {
@@ -23,6 +26,17 @@ tasks {
     }
     compileTestKotlin {
         kotlinOptions.jvmTarget = "1.8"
+    }
+    getByName<Upload>("uploadArchives") {
+        repositories {
+            withConvention(MavenRepositoryHandlerConvention::class) {
+                mavenDeployer {
+                    withGroovyBuilder {
+                        "repository"("url" to uri(mavenLocal().url))
+                    }
+                }
+            }
+        }
     }
 }
 
