@@ -5,9 +5,9 @@ import org.gradle.api.Project
 
 class QPlugin : Plugin<Project> {
     override fun apply(project: Project) {
+        val qg = QuoteGrabber()
         project.gradle.buildFinished() {
             if (it.failure != null) {
-                val qg = QuoteGrabber()
                 qg.grabNewQuote()
             }
         }
@@ -15,7 +15,6 @@ class QPlugin : Plugin<Project> {
             it.group = "lucky"
             it.description = "task to check manually that quotes retrieves correctly"
             it.doLast {
-                val qg = QuoteGrabber()
                 qg.grabNewQuote()
             }
         }
