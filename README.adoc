@@ -25,7 +25,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath("com.yunir:quote-when-fail:1.0")
+        classpath("com.yunir:quote-when-fail:1.1")
     }
 }
 apply(plugin = "com.yunir.quote-when-fail")
@@ -39,5 +39,4 @@ IMPORTANT: Do not forget to set path to your mavel local repository
 == Future plans
 
 * add i18n (use bash.im for RU and bash.org for EN)
-* handle website is unavailable
 * cache quotes to file and use cached quotes when there are no internet connection
